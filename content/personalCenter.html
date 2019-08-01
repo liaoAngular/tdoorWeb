@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/content.css"/>
+    <link rel="stylesheet" href="../css/feeds.css"/>
+    <link rel="stylesheet" href="../css/order.css"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="noticebox">
+
+    </div>
+    <div class="main">
+        <div class="container  clearfix">
+            <div class="m-uchead profile_top">
+                <div class="profile_top_cover"
+                     style="background-image: url(../img/bg5.jpg);background-repeat: no-repeat;background-size: cover;"></div>
+                <input type="file" name="cover" style="display:none" id="cover">
+                <span class="change_cover" onclick="$('#cover').click()">更换封面</span>
+                <div class="profile_top_info">
+                    <div class="profile_top_img relative fl">
+                        <a href="javascript:;">
+                            <img id="p-headUrl" class="round" src="../img/pic_default_secret.png" style="width: 160px;height: 152px;">
+                        </a>
+                    </div>
+                    <div class="profile_top_info_d">
+                        <div class="profile_top_user">
+                            <a href="javascript:;" id="p-nickName">廖某某</a>
+                            &nbsp;
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-ziyuan"></use>
+                            </svg>
+                            <span id="p-tcoin"></span> 积分
+                        </div>
+                        <div class="profile_top_bio" id="p-profiles">个人简介为某人的简要介绍。个人简介可以是表格的形式，也可以是其他形式。一般用于初次见面时个人介绍中或者个人履历表中等。</div>
+                        <div class="u-cert" title=""></div>
+                    </div>
+                </div>
+                <div class="profile_nav clearfix">
+                    <ul class="profile_nav_list clearfix">
+                        <li class="active"><a href="javascript:;" id="mine">主页</a></li>
+                        <li class="dynamicCollect"><a href="javascript:;" id="dynamicCollect">动态收藏</a></li>
+                        <li class="wishList"><a href="javascript:;" id="wishList">愿望清单</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profile_body">
+                <div class="left_container">
+                    <div class="profile_content">
+                        <div class="profile_menu">
+                            <a href="javascript:;" class="active">全部</a>
+                        </div>
+                        <div id="content_list" class="profile_list">
+                            <!--<div class="no_data_div">
+                                <div class="no_data"><img
+                                        src="../img/pic_default_people.png">
+                                    <p>暂无相关内容</p></div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="loading"></div>
+                </div>
+                <div class="right_container">
+                    <div class="recusers">
+                        <div class="u-tt">推荐用户</div>
+                        <ul class="activeUser">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/iconfont.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/dataInteraction.js"></script>
+<script src="../js/autoHTML.js"></script>
+<script>
+    $(function(){
+        //导航样式动态展示
+        autoNav("../","",4);
+        //底部详情加载
+        autoTdoorInfo();
+        //返回顶部
+        autoGoTop();
+        //导航栏用户信息
+        getUserInfo();
+        //展示活跃用户
+        autoIndexActiveUser("123",1);
+        var data=getUrlParam("data");
+        //如果头部用户id为空，则说明是用户自己点击查看个人信息
+        if(data==null){
+            /*userSignIn("getUserInfo");*/
+            var userId=localStorage.getItem("userId");
+            if(userId!=null){
+                console.log("123")
+                getInfoById("checkUser","",userId);
+                getInfoById("post/checkMyPost","",userId);
+            }else{
+                window.location.href="login.html";
+            }
+        }else{
+            //自己点击自己的id，进
+            if(data==localStorage.getItem("userId")){
+
+            }else{
+                getInfoById("checkUser","",data);
+                $(".dynamicCollect").attr("style","display:none");
+                $(".wishList").attr("style","display:none");
+                getInfoById("post/checkMyPost","003",data);
+            }
+        }
+    });
+</script>
+</body>
+</html>

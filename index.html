@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T-door-----首页</title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/content.css"/>
+</head>
+<body>
+<div class="wrap">
+    <!--导航栏-->
+
+    <div class="noticebox">
+
+    </div>
+    <!--主体内容-->
+    <div class="main">
+        <div class="container clear_fix">
+            <div class="left_menu">
+                <ul>
+                    <li>
+                        <a href="#" class="selected">全部动态</a>
+                    </li>
+                    <li>
+                        <a href="content/personalCenter.html">我的动态</a>
+                    </li>
+                    <li>
+                        <a href="content/myOrders.html">我的订单</a>
+                    </li>
+                    <li>
+                        <a href="content/setting.html">设置</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="feed_cont">
+
+                <div class="feed-content">
+                    <div class="feed-menu">
+                        <a href="javascript:showNewPost();" data-type="new" id="newPost" class="font16 selected">最新</a>
+                        <a href="javascript:showHotPost();" id="hotPost" data-type="hot" class="font16">热门</a>
+                    </div>
+                    <div id="content_list">
+                        <div class="feed_item" id="feed_6489">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--右侧内容-->
+            <div class="right_container">
+                <!--活跃用户-->
+                <div class="recusers">
+                    <div class="u-tt">活跃用户</div>
+                    <ul class="activeUser">
+
+                    </ul>
+                </div>
+                <!--广告位置-->
+                <div class="news_ad">
+                    <a href="#" target="_blank">
+                        <img src="img/news.png" alt=""/>
+                    </a>
+                </div>
+                <!--贡献排行榜-->
+                <div class="income-rank">
+                    <div class="title">
+                        收入达人排行榜
+                    </div>
+                    <ul class="income-list">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/iconfont.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/autoHTML.js"></script>
+<script src="js/dataInteraction.js"></script>
+<script src="js/localStorage.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        /*signTimeJudge("123");*/
+        //导航样式动态展示
+        autoNav("","content/",1);
+        //底部详情加载
+        autoTdoorInfo();
+        //返回顶部
+        autoGoTop();
+        //用户信息展示
+        getUserInfo();
+        //动态列表展示
+        allGetDataRewrite("post/sendIndexList",1);
+        //活跃用户列表展示
+        autoIndexActiveUser("test");
+        //收入达人列表展示
+        autoIndexTMax("test");
+
+    });
+</script>
+</body>
+</html>

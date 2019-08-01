@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态详情</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/content.css"/>
+    <link rel="stylesheet" href="../css/feeds.css"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="noticebox">
+
+    </div>
+    <div class="main">
+        <div class="container  clearfix">
+            <div class="left_container clearfix">
+                <div class="feed_left">
+                    <dl class="user-box clearfix">
+                        <dt class="fl">
+                            <a class="avatar_box" id="author_id" href="#">
+                                <img id="author_avatar" class="round"
+                                     src="../img/pic_default_secret.png" width="60">
+                            </a>
+                        </dt>
+                        <dd class="fl ml20 body-box">
+                            <span class="tcolor" id="author_name">廖某某</span>
+
+                            <div class="gcolor mt10" id="post_time">2小时前</div>
+                        </dd>
+                        <dd class="fr mt20 relative">
+                    <span class="options">
+                        <svg class="icon icon-more" aria-hidden="true">
+                            <use xlink:href="#icon-more"></use>
+                        </svg>
+                    </span>
+
+                        </dd>
+                    </dl>
+                    <div class="detail_images">
+                        <a class="feed_repostable news" id="post_link" href="#" target="_blank">
+                            <div class="cover">
+                                <img src="../img/tdoc.png" id="post_img" alt=""/>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-right">
+                        <p class="title" id="detail_web_title">正在加载..........</p>
+                    </div>
+                    <div class="detail_body" id="detail_title">
+                        正在加载............
+                    </div>
+                    <div class="selected-topics" style="margin-bottom: 20px;">
+                        <a href="javascript:;" class="selected-topic-item category" id="category_name">学习</a>
+                    </div>
+                    <div class="detail_share">
+                <span id="J-collect8417" rel="0" status="0">
+                                        <a href="javascript:;" onclick="collected.init(8417, 'feeds', 0);">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use xlink:href="#icon-chakan"></use>
+                                            </svg>
+                                            <font class="cs" id="collect_num">0</font> 人查看
+                                        </a>
+                                    </span>
+                <span id="J-likes8417" rel="0" status="0">
+                                        <a href="javascript:;">
+                                            <svg class="icon likePost" aria-hidden="true">
+                                                <use xlink:href="#icon-guanzhu"></use>
+                                            </svg>
+                                            <font id="like_num">0</font> 人喜欢
+                                        </a>
+                                    </span>
+
+                        <div class="reward_cont">
+                            <p>
+                                <button id="sponsorAuthor" class="btn btn-warning btn-lg">支持10积分</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="detail_comment ">
+                        <div class="comment_title"><span class="comment_count cs8417" id="evaluate_num">0 </span>人评论</div>
+                        <div class="comment_box">
+                            <div class="input-wrap">
+                            <textarea class="comment_editor ev-comment-editor" id="post_evaluate_content"
+                                      placeholder="说点什么吧"></textarea>
+                                <div class="comment_editor mirror ev-mirror" contenteditable="true"></div>
+                                <ul class="ev-mention-list"></ul>
+                            </div>
+                            <div class="comment_tool">
+                                <span class="text_stats">可输入<span class="nums mcolor"> 255 </span>字</span>
+                                <button class="btn btn-primary" id="J-button8417" onclick="commentPublish()"> 评 论
+                                </button>
+                            </div>
+                        </div>
+                        <!--评论列表-->
+                        <div class="comment_list J-commentbox">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="loading"></div>
+            </div>
+            <div class="right_container">
+                <div class="recusers">
+                    <div class="u-tt">推荐用户</div>
+                    <ul class="activeUser">
+
+                    </ul>
+                </div>
+
+
+                <div class="income-rank">
+                    <div class="title">收入达人排行榜</div>
+                    <ul class="income-list">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/iconfont.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/dataInteraction.js"></script>
+<script src="../js/localStorage.js"></script>
+<script src="../js/autoHTML.js?v=20190319"></script>
+<script>
+    var id=getUrlParam("post_id");
+    $(function(){
+        //加载动态评论
+        loadPostEvaluate(id);
+        //加载动态详情
+        loadPostDetail(id);
+
+        autoIndexTMax("123");
+        autoIndexActiveUser("123",1);
+    })
+    function commentPublish(){
+        var content=$("#post_evaluate_content").val();
+       evaluatePost(id,content);
+    }
+    var user_id=localStorage.getItem("userId");
+    if(user_id!=null){
+        myAllData("post/isCollect",id);
+    }
+    //导航样式动态展示
+    autoNav("../","",1);
+    //底部详情加载
+    autoTdoorInfo();
+    //返回顶部
+    autoGoTop();
+    //导航栏用户信息
+    autoUserInfo();
+    //收藏动态
+    $("#J-likes8417").click(function(){
+        clickPost("","post/collectPost",id);
+    });
+    //支持动态作者
+    $("#sponsorAuthor").click(function(){
+        clickPost("","sponsorUser",id);
+    })
+</script>
+</body>
+</html>

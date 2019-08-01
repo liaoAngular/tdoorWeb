@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本资料</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/account.css"/>
+    <link rel="stylesheet" href="../css/content.css"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="noticebox">
+
+    </div>
+    <div class="main">
+        <div class="container  clearfix">
+            <div class="account_container">
+                <div class="account_l">
+                    <ul class="account_menu">
+                        <a href="javascript:;" id="userInfo">
+                            <li class="active">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-wodedongtai"></use>
+                                </svg>
+                                基本资料
+                            </li>
+                        </a>
+                        <a href="javascript:;" id="passwordSettting">
+                            <li>
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-shezhi"></use>
+                                </svg>
+                                安全设置
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="account_r">
+                    <div class="account_c_c">
+                        <div class="account_tab" id="infoArea">
+                            <div class="perfect_title">
+                                <p>基本资料</p>
+                            </div>
+                            <div class="perfect_row mb30">
+                                <div class="account_heder">
+                                    <div class="header">
+                                        <img id="J-image-preview" src="../img/pic_default_secret.png">
+
+                                        <input id="task_id" name="storage_task_id" onchange="sc(this)" type="file"
+                                               style="display: none;">
+
+                                    </div>
+                                    <a class="perfect_btn" id="J-file-upload-btn" href="javascript:$('#task_id').click();">更改头像</a>
+                                </div>
+                            </div>
+                            <div class="perfect_row mb30">
+                                <form action="#">
+                                    <div class="account_form_row">
+                                        <label for="nickName">昵称</label>
+                                        <input id="nickName" name="name" type="text" value="廖某某" maxlength="8">
+                                    </div>
+                                    <div class="account_form_row">
+                                        <label for="profiles">简介</label>
+                                        <input id="profiles" name="profiles" type="text" value="我不是这样的人啊">
+                                    </div>
+                                    <div class="account_form_row">
+                                        <label>性别</label>
+                                        <div class="input">
+                                        <span>
+                                            <input id="male" name="sex" type="radio" value="1">
+                                            <label for="male">男</label>
+                                        </span>
+                                        <span>
+                                            <input id="female" name="sex" type="radio" value="2">
+                                            <label for="female">女</label>
+                                        </span>
+                                        <span>
+                                            <input id="notDisclose" name="sex" type="radio" value="0" checked="checked">
+                                            <label for="notDisclose">不方便透露</label>
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="account_form_row" style="position:relative">
+                                        <label for="address">地区</label>
+                                        <input id="address" name="address" type="text" value="廣西賀州" placeholder="请输入地址">
+                                        <div class="area_searching">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="perfect_btns">
+                                <a href="javascript:setting(this);" class="perfect_btn save" id="J-user-info">保存</a>
+                            </div>
+                        </div>
+                        <div class="account_tab" id="settingArea" style="display: none;">
+                            <div class="perfect_title">
+                                <p>修改密码</p>
+                            </div>
+                            <div class="account_form_row">
+                                <label class="w80 required" for="old_password"><font color="red">*</font>原密码</label>
+                                <input id="old_password" name="old_password" type="password">
+                            </div>
+                            <div class="account_form_row">
+                                <label class="w80 required" for="password"><font color="red">*</font>设置新密码</label>
+                                <input id="password" name="password" type="password">
+                            </div>
+                            <div class="account_form_row">
+                                <label class="w80 required" for="password_confirmation"><font
+                                        color="red">*</font>确认新密码</label>
+                                <input id="password_confirmation" name="password_confirmation" type="password">
+                            </div>
+                            <div class="perfect_btns">
+                                <a class="perfect_btn save" id="J-user-security" href="javascript:;">保存</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-layer-move" style="cursor: move; display: none;"></div>
+<script src="../js/jquery.js"></script>
+<script src="../js/iconfont.js"></script>
+<script src="../js/dataInteraction.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/autoHTML.js"></script>
+<script>
+    //导航样式动态展示
+    autoNav("../","",1);
+    //底部详情加载
+    autoTdoorInfo();
+    //导航栏用户信息
+   /* autoUserInfo();*/
+    getUserInfo();
+    $("#passwordSettting").click(function () {
+        $("#infoArea").hide();
+        $(this).find("li").addClass("active");
+        $("#userInfo").find("li").removeClass("active");
+        $("#settingArea").show();
+    });
+    $("#userInfo").click(function () {
+        $("#settingArea").hide();
+        $("#infoArea").show();
+        $(this).find("li").addClass("active");
+        $("#passwordSettting").find("li").removeClass("active");
+    });
+    userSignIn("getUserInfo");
+</script>
+</body>
+</html>

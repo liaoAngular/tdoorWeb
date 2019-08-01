@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/content.css"/>
+</head>
+<body class="gray">
+<div class="wrap">
+    <div class="login_head">
+        <div class="header">
+            <div class="nav">
+                <div class="nav_left">
+                    <a href="#">
+                        <img src="../img/logo2.PNG" class="nav_logo" alt=""/>
+                    </a>
+                </div>
+                <div class="login_top">
+                    <a href="login.html" class="font16">登录</a>
+                    <a href="../index.html" class="font16">T-door</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="noticebox authnoticebox">
+    </div>
+    <div class="main" style="margin-top: 0px">
+        <div class="reg_content" style="height: 640px;">
+            <ul class="reg_menu">
+                <li>
+                    <a href="#" class="current">邮箱注册</a>
+                </li>
+            </ul>
+            <div class="reg_form">
+                <div id="reg_form">
+                    <div class="reg_input">
+                        <label>邮箱</label>
+                            <span class="input_span">
+                                <input type="text" placeholder="输入邮箱" name="email" id="email"/>
+                            </span>
+                    </div>
+                    <div class="reg_input">
+                        <label>邮箱验证码</label>
+                            <span class="input_span w_280">
+                                <input type="text" placeholder="输入注册验证码" id="verifiable_code" name="verifiable_code"
+                                       maxlength="6"/>
+                            </span>
+                        <span class="get_code" id="smscode" onclick="sendVCode(this,1)" type="reg">获取验证码</span>
+                    </div>
+                    <div class="reg_input">
+                        <label>设置昵称</label>
+                            <span class="input_span">
+                                <input type="text" placeholder="2-10个字符" name="name" maxlength="8">
+                            </span>
+                    </div>
+                    <div class="reg_input">
+                        <label>设置密码</label>
+                            <span class="input_span">
+                                <input type="password" placeholder="限6-15个字符，区分大小写" name="password">
+                            </span>
+                    </div>
+                    <div class="reg_input">
+                        <label>确认密码</label>
+                            <span class="input_span">
+                                <input type="password" placeholder="再次输入密码" name="repassword">
+                            </span>
+                    </div>
+                    <input type="hidden" name="verifiable_type" value="mail">
+                    <a id="reg_btn" class="reg_btn">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/dataInteraction.js"></script>
+<script src="../js/autoHTML.js"></script>
+<script src="../js/iconfont.js"></script>
+<script type="text/javascript">
+    $("#reg_btn").click(function () {
+        var smscode = $('input[name="verifiable_code"]').val();
+        var email = $('input[name="email"]').val();
+        var name = $('input[name="name"]').val();
+        var password = $('input[name="password"]').val();
+        registerSubmit(email, smscode, name, password,1);
+    })
+    autoTdoorInfo();
+</script>
+</body>
+</html>

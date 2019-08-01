@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发帖---t_door</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/content.css"/>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="nav nav_border">
+        <div class="nav_left">
+            <a href="https://tsplus.zhibocloud.cn/feeds">
+                <img src=" https://tsplus.zhibocloud.cn/assets/pc/images/logo.png  " class="nav_logo">
+            </a>
+        </div>
+
+
+        <div class="nav_right relative">
+            <img src="https://tsplus.zhibocloud.cn/assets/pc/images/pic_default_secret.png" id="menu_toggle" alt="廖某某">
+            <span class="font16 nav_name">廖某某</span>
+
+            <div class="nav_menu" style="display: none;">
+                <div class="hover_cover clearfix">
+                </div>
+                <div class="triangle"></div>
+                <ul>
+                    <li>
+                        <a href="https://tsplus.zhibocloud.cn/users">个人主页</a>
+                    </li>
+                    <li style="border-top: 1px solid #ededed; padding-top: 20px;">
+                        <a href="https://tsplus.zhibocloud.cn/settings/wallet">
+                            <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-wallet"></use></svg>我的钱包
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tsplus.zhibocloud.cn/settings/authenticate">
+                            <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-auth"></use></svg>我的认证
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tsplus.zhibocloud.cn/user/collect-feeds">
+                            <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-collect"></use></svg>我的收藏
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://tsplus.zhibocloud.cn/settings/index">
+                            <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-setting"></use></svg>设置
+                        </a>
+                    </li>
+                    <li style="border-top: 1px solid #ededed; padding-top: 20px;">
+                        <a href="https://tsplus.zhibocloud.cn/auth/logout" id="action-logout">退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav_list clearfix">
+
+            <ul class="navs">
+                <li>
+                    <a target="_self" href="http://tsplus.zhibocloud.cn/feeds">动态 </a>
+
+                    <div class="child_navs">
+                    </div>
+                </li>
+                <li>
+                    <a target="_self" href="http://tsplus.zhibocloud.cn/group">圈子 </a>
+
+                    <div class="child_navs">
+                    </div>
+                </li>
+                <li>
+                    <a target="_self" href="http://tsplus.zhibocloud.cn/news" class="selected">资讯 </a>
+
+                    <div class="child_navs">
+                    </div>
+                </li>
+                <li>
+                    <a target="_self" href="http://tsplus.zhibocloud.cn/questions">问答 </a>
+
+                    <div class="child_navs">
+                    </div>
+                </li>
+                <li>
+                    <a target="_self" href="http://tsplus.zhibocloud.cn/people">找伙伴 </a>
+
+                    <div class="child_navs" style="display: none;">
+                    </div>
+                </li>
+                <li>
+                    <a target="_self" href="https://tsplus.zhibocloud.cn/topic">话题 </a>
+
+                    <div class="child_navs" style="display: none;">
+                    </div>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.thinksns.com">关于我们 </a>
+
+                    <div class="child_navs">
+                    </div>
+                </li>
+            </ul>
+
+            <div class="nav_search">
+                <input class="nav_input" type="text" placeholder="输入关键词搜索" value="" id="head_search">
+                <a class="nav_search_icon">
+                    <svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg>
+                </a>
+
+                <div class="head_search" style="display: none;">
+
+                    <div class="history">
+                        <p>历史记录</p>
+                        <ul></ul>
+                        <div class="clear">
+                            <a href="javascript:;" onclick="delHistory('all')">清空历史记录</a>
+                        </div>
+                    </div>
+
+
+                    <div class="search_types">
+                        <ul>
+                            <li type="1"><span>与<span class="keywords"></span>相关的动态</span></li>
+                            <li type="2"><span>与<span class="keywords"></span>相关的问答</span></li>
+                            <li type="3"><span>与<span class="keywords"></span>相关的文章</span></li>
+                            <li type="4"><span>与<span class="keywords"></span>相关的用户</span></li>
+                            <li type="5"><span>与<span class="keywords"></span>相关的圈子</span></li>
+                            <li type="6"><span>与<span class="keywords"></span>相关的专题</span></li>
+                            <li type="8"><span>与<span class="keywords"></span>相关的话题</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="noticebox">
+    </div>
+    <div class="main">
+        <div class="container  clearfix">
+
+            <div class="p-newsrel">
+                <div class="news_left">
+                    <div class="m-form release_cont">
+                        <div class="release_title">
+                            <input type="hidden" id="news_id" name="id" value="0">
+                            <input type="text" id="subject-title" name="title" value="" placeholder="请在此输入20字以内的标题" maxlength="20">
+                        </div>
+                        <div class="release_title p_30">
+                            <textarea class="subject autotext" id="subject-abstract" name="abstract" value="" placeholder="请在此输入网址链接" maxlength="200" style="resize: none; height: 24px; overflow-y: hidden;"></textarea>
+                        </div>
+                        <div data-value="0" class="zy_select gap12 p_30" id="categrey">
+                            <span>请选择文章分类</span>
+                            <ul>
+                                <li data-value="4">研发播报</li>
+                                <li data-value="5">研发日记</li>
+                                <li data-value="6">优惠活动</li>
+                                <li data-value="7">官方动作</li>
+                                <li data-value="10">产品交流</li>
+                                <li data-value="11">行业资讯</li>
+                            </ul>
+                            <i></i>
+                            <input id="cate" type="hidden" value="0">
+                        </div>
+                        <div class="release_place">
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                            <link rel="stylesheet" href="https://tsplus.zhibocloud.cn/assets/pc/markdown/pluseditor.css">
+                            <div id="layout" class="div">
+                                <div class="editormd">
+                                    <textarea id="editor" style="display: none"></textarea><div class="editor-toolbar"><a title="粗体 (Ctrl-B)" tabindex="-1" class="fa fa-bold"></a><a title="斜体 (Ctrl-I)" tabindex="-1" class="fa fa-italic"></a><a title="删除线" tabindex="-1" class="fa fa-strikethrough"></a><a title="水平线" tabindex="-1" class="fa fa-minus"></a><i class="separator">|</i><a title="H1" tabindex="-1" class="fa fa-header fa-header-x fa-header-1"></a><a title="H2" tabindex="-1" class="fa fa-header fa-header-x fa-header-2"></a><a title="H3" tabindex="-1" class="fa fa-header fa-header-x fa-header-3"></a><i class="separator">|</i><a title="代码 (Ctrl-Alt-C)" tabindex="-1" class="fa fa-code"></a><a title="引用 (Ctrl-')" tabindex="-1" class="fa fa-quote-left"></a><a title="无序列表 (Ctrl-L)" tabindex="-1" class="fa fa-list-ul"></a><a title="有序列表 (Ctrl-Alt-L)" tabindex="-1" class="fa fa-list-ol"></a><i class="separator">|</i><a title="超链接 (Ctrl-K)" tabindex="-1" class="fa fa-link"></a><a title="外链图片 (Ctrl-Alt-I)" tabindex="-1" class="fa fa-picture-o"></a><a title="上传图片" tabindex="-1" class="fa fa-plus"></a><a title="插入表格" tabindex="-1" class="fa fa-table"></a><i class="separator">|</i><a title="预览 (Ctrl-P)" tabindex="-1" class="fa fa-eye no-disable"></a><a title="实时预览 (F9)" tabindex="-1" class="fa fa-columns no-disable no-mobile"></a><a title="全屏预览 (F11)" tabindex="-1" class="fa fa-arrows-alt no-disable no-mobile"></a><a title="Markdown Guide" tabindex="-1" class="fa fa-question-circle" href="https://simplemde.com/markdown-guide" target="_blank"></a></div><div class="CodeMirror cm-s-paper CodeMirror-wrap CodeMirror-empty"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 15px; left: 15px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: -17px; border-right-width: 13px; min-height: 29px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><pre class="CodeMirror-placeholder" style="height: 0px; overflow: visible;">开始你的表演</pre><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 29px;"></div><div class="CodeMirror-gutters" style="display: none; height: 42px;"></div></div></div><div class="editor-preview-side"></div>
+                                </div>
+                            </div>
+                            <script type="text/javascript" src="https://tsplus.zhibocloud.cn/assets/pc/markdown/pluseditor.min.js"></script>
+                            <style> .CodeMirror { height: 530px } </style>
+                            <script type="text/javascript">
+                                var editor = new pluseditor({
+                                    element: document.querySelector('#editor'),
+                                    fileApiPath: "/api/v2/files/",
+                                    placeholder: "开始你的表演",
+                                    status: false,
+                                    uploadFile: function(file, cb){
+                                        fileUpload.init(file, function(image, f, id){
+                                            cb(id);
+                                        })
+                                    }
+                                });
+                            </script>
+                        </div>
+                        <div class="formitm">
+                            <div class="tags-box ipt">
+                                <div class="place ">
+                                    <svg class="icon" aria-hidden="true"><use xlink:href="#icon-tag"></use></svg>
+                                    请选择标签
+                                </div>
+                                <div class="choos-tags" id="J-tag-box">
+                                    <dl>
+                                        <dt>资讯</dt>
+                                        <dd data-id="50">动漫</dd>
+                                        <dd data-id="49">文化</dd>
+                                        <dd data-id="48">手机</dd>
+                                        <dd data-id="47">数码</dd>
+                                        <dd data-id="46">美食</dd>
+                                        <dd data-id="44">军事</dd>
+                                        <dd data-id="43">汽车</dd>
+                                        <dd data-id="45">房产</dd>
+                                        <dd data-id="42">财经</dd>
+                                        <dd data-id="41">成都</dd>
+                                        <dd data-id="40">体育</dd>
+                                        <dd data-id="39">段子</dd>
+                                        <dd data-id="38">娱乐</dd>
+                                        <dd data-id="37">育儿</dd>
+                                        <dd data-id="36">科技</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>兴趣</dt>
+                                        <dd data-id="35">篮球</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>个性</dt>
+                                        <dd data-id="31">2B青年欢乐多</dd>
+                                        <dd data-id="29">车迷</dd>
+                                        <dd data-id="30">文艺青年</dd>
+                                        <dd data-id="32">有钱任性</dd>
+                                        <dd data-id="33">霸道总裁</dd>
+                                        <dd data-id="34">女汉子</dd>
+                                        <dd data-id="28">运动达人</dd>
+                                        <dd data-id="27">自恋狂</dd>
+                                        <dd data-id="26">美女</dd>
+                                        <dd data-id="25">安静的美男子</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>职业</dt>
+                                        <dd data-id="7">Android程序猿</dd>
+                                        <dd data-id="12">技术人员</dd>
+                                        <dd data-id="11">产品经理</dd>
+                                        <dd data-id="10">交互设计师</dd>
+                                        <dd data-id="9">前端攻城狮</dd>
+                                        <dd data-id="8">UI设计师</dd>
+                                        <dd data-id="6">Ios程序猿</dd>
+                                        <dd data-id="5">php攻城狮</dd>
+                                        <dd data-id="13">建筑狮</dd>
+                                        <dd data-id="14">运动员</dd>
+                                        <dd data-id="15">艺人</dd>
+                                        <dd data-id="24">女博士</dd>
+                                        <dd data-id="23">媒体人</dd>
+                                        <dd data-id="22">滑稽</dd>
+                                        <dd data-id="21">学者</dd>
+                                        <dd data-id="20">作家</dd>
+                                        <dd data-id="19">大学僧</dd>
+                                        <dd data-id="18">商务经理</dd>
+                                        <dd data-id="17">数据分析狮</dd>
+                                        <dd data-id="16">旅行家</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>身份</dt>
+                                        <dd data-id="51">北漂</dd>
+                                        <dd data-id="52">人物</dd>
+                                        <dd data-id="4">企业用户</dd>
+                                        <dd data-id="3">个人站长</dd>
+                                        <dd data-id="2">Ts粉丝团</dd>
+                                        <dd data-id="1">酱油君</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="release_produce">
+            <span class="release_bq" style="display: none;">
+                <img src="https://tsplus.zhibocloud.cn/assets/pc/images/pro.png"><input placeholder="添加标签，多个标签用逗号分开">
+            </span>
+            <span class="ai_face_box">
+                <img src=" https://tsplus.zhibocloud.cn/assets/pc/images/pic_upload.png " id="J-image-preview">
+                <div class="ai_upload">
+                    <input name="subject-image" id="subject-image" type="hidden" value="0">
+                </div>
+            </span>
+                        </div>
+                        <div class="release_word">
+                            <input type="text" id="subject-author" name="subject-author" value="" placeholder="文章作者（选填）" maxlength="8">
+                        </div>
+                        <div class="release_word">
+                            <input type="text" id="subject-from" name="subject-from" value="" placeholder="文章转载至何处（非转载可不填）" maxlength="8">
+                        </div>
+                        <div class="release_after">投稿后，我们将在两个工作日内给予反馈，谢谢合作！</div>
+                        <div class="release_btn">
+                            <button type="submit" class="subject-submit button release_a2">发布</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right_container">
+                    <div class="release_right">
+                        <div class="release_right_title">发帖须知</div>
+                        <div class="release_right_artic">
+                            <p>请用准确的语言描述您发布的资讯的主旨</p>
+                            <p>选择适合的资讯分类, 让您发布的资讯能快速在相应的分类中得到展示.</p>
+                            <p>详细补充您的咨询内容, 并提供一些相关的素材以供参与者更多的了解您所要表述的资讯思想。</p>
+                            <p>注：如果您的内容不够正式，为了数据更美观，您的投稿将不会通过；投稿内容一经审核通过，所投递的内容将共所有人可以阅读，并在您发布资讯中进行分享、点赞和评论</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--返回顶部按钮-->
+    <div class="right_extras">
+        <a href="javascript:;" class="goTop" id="goTop">
+
+        </a>
+    </div>
+</div>
+<!--底部位置-->
+<div class="footer">
+    <div class="footer_cont">
+        <div class="rights font12">
+            Copyright © 2016-Present Chengdu ZhiYiChuangXiang Technology Co., Ltd. All rights reserved.
+        </div>
+        <div class="rights font12">蜀ICP备14012789号</div>
+        <div class="developer">
+            本站技术由 <span>T-door</span>提供技术和产品支持
+        </div>
+    </div>
+</div>
+<div id="ms_fixed_wrap" style="position: fixed;top: 0px;right: 0px;">
+    <dl id="ms_fixed">
+        <dd id="ms_at">
+            <a href="javascript:;"onclick="easemob.openChatDialog(8);">8</a>
+        </dd>
+        <dd id="ms_commented">
+            <a href="javascript:;"onclick="easemob.openChatDialog(1);">1</a>
+        </dd>
+        <dd id="ms_like">
+            <a href="javascript:;"onclick="easemob.openChatDialog(2);">2</a>
+        </dd>
+        <dd id="ms_system">
+            <a href="javascript:;"onclick="easemob.openChatDialog(3);">3</a>
+        </dd>
+        <dd id="ms_pinned">
+            <a href="javascript:;"onclick="easemob.openChatDialog(4);">4</a>
+        </dd>
+        <dd id="ms_chat_1" class="ms_chat" data-cid="1" data-name="T-door小助手">
+            <a href="javascript:;"onclick="easemob.openChatDialog(0,1,137);">
+                <img src="../img/pic_default_secret.png" alt=""/>
+            </a>
+        </dd>
+    </dl>
+</div>
+</body>
+</html>

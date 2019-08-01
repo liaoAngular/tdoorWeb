@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/content.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+</head>
+<body class="gray">
+<div class="wrap">
+
+    <div class="login_head">
+        <div class="header">
+            <div class="nav">
+                <div class="nav_left">
+                    <a href="feeds">
+                        <img src="../img/logo2.PNG" class="nav_logo">
+                    </a>
+                </div>
+                <div class="login_top">
+                    <a href="register.html" class="font16 ">注册</a>
+                    <a href="../index.html" class="font16 ">Tdoor官网</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="noticebox">
+
+    </div>
+    <div class="main">
+        <div class="login_container">
+            <div class="login_left">
+                <img src="../img/login-leftBg.png">
+            </div>
+            <div class="login_right">
+                <div>
+                    <input type="hidden" name="_token" value="VLcCT9tcGF9ieJC64engjTm9pGtqac3SyYDgYzO6">
+                    <input type="hidden" name="redirect" value="" required="">
+                    <div class="login_input">
+                        <input type="text" placeholder="输入邮箱" name="login" value="" required="" autofocus="">
+                    </div>
+                    <div class="login_input">
+                        <input type="password" placeholder="输入密码" name="password" required="">
+                    </div>
+                    <div class="login_extra">
+                        <a class="forget_pwd" href="forgetPassword.html">忘记密码</a>
+                        <a class="" href="#">验证码登录 </a>
+                    </div>
+                    <!--<button class="login_button">登录</button>-->
+                    <a class="login_button" id="login_button" type="submit">登录</a>
+                </div>
+
+                <div class="login_right_bottom">
+                    <span class="no_account">没有账号？<a href="register.html"><span>注册</span></a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/localStorage.js"></script>
+<script src="../js/dataInteraction.js"></script>
+<script>
+    $("#login_button").click(function(){
+        var email=$('input[name="login"]').val();
+        var password=$('input[name="password"]').val();
+        login(email,password);
+    })
+</script>
+</body>
+</html>

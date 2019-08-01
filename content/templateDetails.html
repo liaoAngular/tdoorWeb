@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航模板详情</title>
+    <link rel="stylesheet" href="../css/animate.min.css"/>
+    <link rel="stylesheet" href="../css/swiper.css"/>
+    <link rel="stylesheet" href="../css/templatestyle.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <style type="text/css">
+        body,html{
+            background: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="noticebox">
+
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper" id="detailSwiper"
+         style="width: 8022px; height: 700px; transform: translate3d(-5730px, 0px, 0px); transition-duration: 0.001s;">
+
+    </div>
+    <div class="pagination"><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span
+            class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span
+            class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span></div>
+    <div class="cover"></div>
+    <div class="home-events">
+        <div class="home-events-box" style="min-height:50px;">
+            <div class="home-events-box-wrapper" style="min-height:50px;">
+                <div class="home-events-box-item">
+                    <h4 style="margin-top:150px;">￥：
+                        <span id="template_price">144</span>
+                    </h4>
+                </div>
+                <div class="home-events-box-item2">
+                    <h2 id="template_title" style="margin-top: 120px;">Oxford Advanced Learner's Dictionary, 8th edition</h2>
+                    <i id="author_name" style="color: #1e9ed8;margin-top: 30px;">
+                        作者：廖某某
+                        <!--<i >科幻</i>-->
+                    </i>
+                    <br>
+                    <span>❤❤❤❤❤ 5分</span>
+                    <br>
+                    <p style="color: #000;" id="template_introduce">Improve your English language skills with the Oxford Advanced Learner’s Dictionary. Understand what words mean. Learn how to say them. Know how to use them.</p>
+                </div>
+                <div class="home-events-box-item">
+                    <div style="margin-top: 140px;"></div>
+                    <button class="add2cart version2" id="buyT" data-code="0">购买</button>
+                    <button class="add2cart version2" id="collectT" data-code="0" onclick="collectTBtn()">收藏</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--顾客评价-->
+    <div class="pdpComment pdpBlock block_1 ajaxcomment">
+        <div class="comment_box">
+            <div class="input-wrap">
+                <textarea class="comment_editor ev-comment-editor" id="evaluateContent" placeholder="说点什么吧"></textarea>
+                <div class="comment_editor mirror ev-mirror" contenteditable="true"></div>
+                <ul class="ev-mention-list"></ul>
+            </div>
+            <div class="xzw_starBox">
+                <ul class="star stars">
+                    <li>
+                        <a href="javascript:void(0);" title="1" class="one-stars">1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" title="2" class="two-stars">1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" title="3" class="three-stars">1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" title="4" class="four-stars">1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" title="5" class="five-stars">1</a>
+                    </li>
+                </ul>
+                <div class="current-rating showb" style="width: 0px;">
+
+                </div>
+                <div class="description"></div>
+                <div class="prompt" style="display: block;">请为商品打分</div>
+            </div>
+            <div class="comment_tool">
+                <div class="commentBtnBox">
+                    <a href="javascript:void(0);" id="sharEvaluate" class="go2comment">发表评价</a>
+                </div>
+            </div>
+        </div>
+        <div class="pdp_module_comment" id="comment">
+            <div class="comment_container">
+                <h3 class="comment_title" tabindex="0">顾客评价</h3>
+                <div class="comment_tip">欢迎分享您对本商品的评价或使用心得！</div>
+            </div>
+            <ul class="comments" id="commentArea">
+                <!--<div class="no_data_div">
+                    <div class="no_data"><img
+                            src="../img/pic_default_people.png">
+                        <p>暂无相关内容</p></div>
+                </div>-->
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="../js/iconfont.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/autoHTML.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/swiper.animate1.0.2.min.js"></script>
+<script src="../js/dataInteraction.js"></script>
+<script>
+    var id=getUrlParam("template_id");
+    getTemplateDetail(id);
+    var template_id=getUrlParam("template_id");
+    $("#sharEvaluate").click(function(){
+        var code=$("#buyT").attr("data-code");
+        if(code==0){
+            noticebox("你还没购买，请先购买",0)
+        }else{
+            evaluate(template_id);
+        }
+    })
+    $("#buyT").click(function(){
+        var price=$("#template_price").text();
+        var code=$(this).attr("data-code");
+        if(code==1){
+            noticebox("你已经购买过了，请不要重复购买",1);
+        }else{
+            purchaseTemplate(template_id,price);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/order.css"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="noticebox">
+
+    </div>
+    <div class="main">
+        <div class="container  clearfix">
+            <div class="m-topic p-topic-index">
+                <div class="left">
+                    <nav class="topic-nav">
+                        <a class="active" >我的订单</a>
+                    </nav>
+                    <hr>
+                    <div class="clear_fix" id="topic_list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.js"></script>
+<script src="../js/dataInteraction.js"></script>
+<script src="../js/autoHTML.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/iconfont.js"></script>
+<script>
+    myAllData("shop/showOrders");
+    //导航样式动态展示
+    autoNav("../","",1);
+    //底部详情加载
+    autoTdoorInfo();
+    //返回顶部
+    autoGoTop();
+    //导航栏用户信息
+    autoUserInfo();
+</script>
+</body>
+</html>
